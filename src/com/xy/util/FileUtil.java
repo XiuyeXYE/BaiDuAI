@@ -1,6 +1,8 @@
 package com.xy.util;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * 文件读取工具类
@@ -68,5 +70,13 @@ public class FileUtil {
                 bos.close();
             }
         }
+    }
+    
+    public static void writeFile(String filename,byte[] data) {
+    	try {
+			Files.write(Paths.get(filename), data);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }
