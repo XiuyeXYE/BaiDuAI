@@ -10,6 +10,7 @@ public class URL {
 	public static final String general_enhanced = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_enhanced";
 	public static final String idcard = "https://aip.baidubce.com/rest/2.0/ocr/v1/idcard";
 	public static final String bankcard = "https://aip.baidubce.com/rest/2.0/ocr/v1/bankcard";
+	public static final String business_license = "https://aip.baidubce.com/rest/2.0/ocr/v1/business_license";
 	
 	
 }
