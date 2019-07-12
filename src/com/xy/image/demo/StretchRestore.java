@@ -55,7 +55,7 @@ public class StretchRestore {
             
             String image = TypeUtil.dynamic_cast(m.get("image"));
 
-            Files.write(Paths.get("laji.jpg"), com.baidu.aip.util.Base64Util.decode(image));
+            Files.write(Paths.get("out/laji.jpg"), com.baidu.aip.util.Base64Util.decode(image));
             
             
             

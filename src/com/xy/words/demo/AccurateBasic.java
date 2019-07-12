@@ -18,7 +18,7 @@ public class AccurateBasic {
 	public static String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate";
 	
 	public static void main(String[] args) throws Exception {
-		String filename = "image_advertise.jpeg";
+		String filename = "pic/image_advertise.jpeg";
 		
 		
 		byte[] imgData = FileUtil.readFileByBytes(filename);

@@ -14,7 +14,7 @@ public class BankCard {
 
 	public static void main(String[] args) {
 
-		String filename = "bankcard.jpg";
+		String filename = "pic/bankcard.jpg";
 		
 		LogUtil.log(WordsUtil.resultJson(URL.bankcard, AuthService.getAuth(), WordsUtil.image(filename).orElse("NONE"))
 				.orElse("NONE"));

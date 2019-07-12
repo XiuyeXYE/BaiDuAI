@@ -18,7 +18,7 @@ public class IDCard {
 		String filename = "IDCardFront.jpg";
 		LogUtil.log(WordsUtil.resultJson(URL.idcard, AuthService.getAuth(),
 				WordsUtil.image(filename).orElse("NONE") + "&" + "id_card_side=front").orElse("NONE"));
-		filename = "IDCardBack.jpg";
+		filename = "pic/IDCardBack.jpg";
 		LogUtil.log(WordsUtil.resultJson(URL.idcard, AuthService.getAuth(),
 				WordsUtil.image(filename).orElse("NONE") + "&" + "id_card_side=back").orElse("NONE"));
 

@@ -20,7 +20,7 @@ public class BasicGeneral {
 	public static String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic";
 	
 	public static void main(String[] args) throws Exception {
-		String filename = "image_advertise.jpeg";
+		String filename = "pic/image_advertise.jpeg";
 		
 		String token = AuthService.getAuth();
 		

@@ -14,7 +14,7 @@ public class BusinessLicense {
 
 	public static void main(String[] args) {
 
-		String filename = "businesslicese2.jpg";
+		String filename = "pic/businesslicese2.jpg";
 		//效果有点不好
 		LogUtil.log(WordsUtil.resultJson(URL.business_license, AuthService.getAuth(), WordsUtil.image(filename).orElse("NONE"))
 				.orElse("NONE"));

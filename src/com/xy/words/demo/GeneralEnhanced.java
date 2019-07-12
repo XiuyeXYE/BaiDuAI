@@ -15,7 +15,7 @@ public class GeneralEnhanced {
 	public static String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_enhanced";
 
 	public static void main(String[] args) throws Exception {
-		String filename = "image_advertise.jpeg";
+		String filename = "pic/image_advertise.jpeg";
 
 		String accessToken = AuthService.getAuth();
 		String result = WordsUtil.result(url, accessToken, WordsUtil.image(filename).orElseGet(() -> {

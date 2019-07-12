@@ -29,7 +29,7 @@ public class General {
 		String otherHost = "https://aip.baidubce.com/rest/2.0/ocr/v1/general";
 		// 本地图片路径
 //		String filePath = "E:\\code3\\analyze\\laji2.jpg";
-		String filePath = "E:\\code3\\python-win32-quickstart2\\image_advertise.jpeg";
+		String filePath = "pic/image_advertise.jpeg";
 		try {
 			byte[] imgData = FileUtil.readFileByBytes(filePath);
 			String imgStr = Base64Util.encode(imgData);

@@ -34,7 +34,7 @@ public class Colourize {
         String url = "https://aip.baidubce.com/rest/2.0/image-process/v1/colourize";
         try {
             // 本地文件路径
-            String filePath = "image_advertise.jpeg";
+            String filePath = "pic/image_advertise.jpeg";
             byte[] imgData = FileUtil.readFileByBytes(filePath);
             String imgStr = Base64Util.encode(imgData);
             String imgParam = URLEncoder.encode(imgStr, "UTF-8");
@@ -54,7 +54,7 @@ public class Colourize {
             
             String image = TypeUtil.dynamic_cast(m.get("image"));
 
-            Files.write(Paths.get("wenzi.jpg"), com.baidu.aip.util.Base64Util.decode(image));
+            Files.write(Paths.get("out/wenzi.jpg"), com.baidu.aip.util.Base64Util.decode(image));
             
             
             return result;

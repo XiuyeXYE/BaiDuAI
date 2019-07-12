@@ -30,7 +30,7 @@ public class Dehaze {
         String url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/dehaze";
         try {
             // 本地文件路径
-            String filePath = "laji.jpg";
+            String filePath = "pic/laji.jpg";
             byte[] imgData = FileUtil.readFileByBytes(filePath);
             String imgStr = Base64Util.encode(imgData);
             String imgParam = URLEncoder.encode(imgStr, "UTF-8");
@@ -48,7 +48,7 @@ public class Dehaze {
             
             String image = TypeUtil.dynamic_cast(m.get("image"));
             
-            FileUtil.writeFile("behaze.jpg", com.baidu.aip.util.Base64Util.decode(image));
+            FileUtil.writeFile("out/behaze.jpg", com.baidu.aip.util.Base64Util.decode(image));
             
             return result;
         } catch (Exception e) {

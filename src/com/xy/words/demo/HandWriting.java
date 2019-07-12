@@ -14,7 +14,7 @@ public class HandWriting {
 
 	public static void main(String[] args) {
 
-		String filename = "handwriting.png";
+		String filename = "pic/handwriting.png";
 		
 		LogUtil.log(WordsUtil.resultJson(URL.handwriting, AuthService.getAuth(), WordsUtil.image(filename).orElse("NONE"))
 				.orElse("NONE"));
