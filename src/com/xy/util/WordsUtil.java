@@ -5,8 +5,7 @@ import java.net.URLEncoder;
 import java.util.Optional;
 
 public class WordsUtil {
-	
-	
+
 	public static Optional<String> image(String filename) {
 		try {
 			byte[] imgData = FileUtil.readFileByBytes(filename);
@@ -18,8 +17,17 @@ public class WordsUtil {
 		}
 		return Optional.empty();
 	}
-	
-	public static Optional<String> result(String url,String token,String params) {
+
+	public static Optional<String> resultJson(String url, String token, String params) {
+		try {
+			return Optional.ofNullable(GsonUtils.format(HttpUtil.post(url, token, params)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Optional.empty();
+	}
+
+	public static Optional<String> result(String url, String token, String params) {
 		try {
 			return Optional.ofNullable(HttpUtil.post(url, token, params));
 		} catch (Exception e) {
@@ -27,7 +35,5 @@ public class WordsUtil {
 		}
 		return Optional.empty();
 	}
-	
-	
-	
+
 }

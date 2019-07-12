@@ -15,7 +15,7 @@ import com.xy.words.AuthService;
  */
 public class Accurate {
 	
-	public static String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic";
+	public static String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate";
 	
 	public static void main(String[] args) throws Exception {
 		String filename = "image_advertise.jpeg";
