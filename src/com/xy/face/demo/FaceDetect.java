@@ -32,8 +32,15 @@ public class FaceDetect {
             Map<String, Object> map = new HashMap<>();
 //            map.put("image", "027d8308a2ec665acb1bdf63e513bcb9");
 //            map.put("image", "https://ai.bdstatic.com/file/EF2B8C2B8BCD43DA931B218759D59C22");
-            
-            map.put("image", Base64Util.encode(FileUtil.readFileByBytes("E:/code3/python-win32-quickstart3/faces.jpg")));
+            //清晰度高的图片识别效果好 face_probability >= 8.0
+//            map.put("image", Base64Util.encode(FileUtil.readFileByBytes("faces/whiteMaleFrontFace.png")));
+//            map.put("image", Base64Util.encode(FileUtil.readFileByBytes("faces/whiteMaleSideFace.png")));
+            //半边脸效果不好
+            map.put("image", Base64Util.encode(FileUtil.readFileByBytes("faces/whiteMalePartFace.png")));
+//            map.put("image", Base64Util.encode(FileUtil.readFileByBytes("pic/blueFace.jpg")));
+//            map.put("image", "b924a6568bf89138ac5aac64bce10104");
+            //not recognize
+//            map.put("image", Base64Util.encode(FileUtil.readFileByBytes("pic/bigNoseFace.jpg")));
 //            map.put("image", Base64Util.encode(FileUtil.readFileByBytes("E:\\code3\\analyze\\laji2.jpg")));
 //            map.put("image", Base64Util.encode(FileUtil.readFileByBytes("E:\\code3\\analyze\\zhumouq.jpg")));
 //            Encoder encoder = Base64.getEncoder();
@@ -43,7 +50,8 @@ public class FaceDetect {
 //            map.put("image_type", "FACE_TOKEN");
 //            map.put("image_type", "URL");
             map.put("image_type", "BASE64");
-            map.put("max_face_num", "10");
+            
+            map.put("max_face_num", "10");//最大检测人脸个数
 
             String param = GsonUtils.toJson(map);
 
