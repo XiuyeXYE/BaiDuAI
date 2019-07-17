@@ -7,8 +7,13 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import com.sdk.face.util.Utils;
+import com.xiuye.util.U;
 import com.xiuye.util.cls.TypeUtil;
 import com.xiuye.util.log.LogUtil;
+import com.xiuye.window.IV;
+
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 /**
  * 人脸检测
@@ -29,22 +34,42 @@ public class FaceDetect {
 			// 人脸的类型
 			options.put("face_type", "LIVE");
 			// 活体控制 检测结果中不符合要求的人脸会被过滤
-			options.put("liveness_control", "LOW");
-			Utils.base64Image("my/I1.jpg").ifPresent(img -> {
-				LogUtil.log(c.detect(img, "BASE64", options).toString(4));
-			});
-			Utils.base64Image("my/I2.jpg").ifPresent(img -> {
+//			options.put("liveness_control", "LOW");
+//			Utils.base64Image("my/I1.jpg").ifPresent(img -> {
+//				LogUtil.log(c.detect(img, "BASE64", options).toString(4));
+//			});
+//			String filename = "faces/political_aobama_male_face.jpg";
+//			String filename = "faces/bigNoseManFace.jpg";//bad
+//			String filename = "faces/grayManGlassesFace.jpg";
+//			String filename = "faces/political_laxi_female_face.jpg";
+//			String filename = "faces/political_stalin_gray_male_face.jpg";
+			String filename = "faces/multi_faces.jpg";
+//			String filename = "my/I1.jpg";
+//			String filename = "faces/whiteMaleFrontFace.png";
+//			String filename = "faces/whiteMaleSideFace.png";
+//			String filename = "faces/blueWomanFace.jpg";
+			Utils.base64Image(filename).ifPresent(img -> {
 				JSONObject jsonObj = c.detect(img, "BASE64", options);
 				LogUtil.log(jsonObj.toString(4));
 				Map<String, Object> m = jsonObj.toMap();
 				Map<String, Object> result = Utils.map(m.get("result"));
 				int faceNum = Utils.I(result.get("face_num"));
 				List<?> faces = Utils.list(result.get("face_list"));
+				Image image = U.toImage(filename);
 				for (int i = 0; i < faceNum; i++) {
 					Map<String, Object> face = Utils.map(faces.get(i));
+					
 					Map<String, Object> location = Utils.map(face.get("location"));
+					LogUtil.log("face_probability=", face.get("face_probability"));
 					LogUtil.log(location);
+					int top = TypeUtil.<Double,Object>dynamic_cast(location.get("top")).intValue();
+					int left = TypeUtil.<Double,Object>dynamic_cast(location.get("left")).intValue();
+					int width = TypeUtil.<Integer,Object>dynamic_cast(location.get("width")).intValue();
+					int height = TypeUtil.<Integer,Object>dynamic_cast(location.get("height")).intValue();
+					image = U.rect(image, Color.RED, left, top, width, height,2);
 				}
+				IV.imshow(image);
+				IV.waitKey();
 			});
 
 		});

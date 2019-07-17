@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="lib/util.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.8.5-sources.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.8.5.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ImageHandler"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

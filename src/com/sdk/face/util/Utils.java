@@ -55,5 +55,9 @@ public class Utils {
 	public static <T> List<?> list(T t){
 		return TypeUtil.dynamic_cast(t);
 	}
+
+	public static<T> double D(T t) {
+		return TypeUtil.dynamic_cast(t);
+	}
 }
 
