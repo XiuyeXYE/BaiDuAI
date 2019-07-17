@@ -1,6 +1,7 @@
 package com.sdk.face.util;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -58,6 +59,10 @@ public class Utils {
 
 	public static<T> double D(T t) {
 		return TypeUtil.dynamic_cast(t);
+	}
+
+	public static <K,V> Map<K, V> map() {
+		return new HashMap<K, V>();
 	}
 }
 
