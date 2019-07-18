@@ -37,6 +37,7 @@ public class FaceSearch {
 			try {
 //				String image = Base64Util.encode(FileUtil.readFileByBytes("faces/whiteMaleFrontFace.png"));
 				String image = Base64Util.encode(FileUtil.readFileByBytes("faces/AndyLou/face-1.jpg"));
+//				String image = Base64Util.encode(FileUtil.readFileByBytes("faces/AndyLou/face-0.jpg"));
 				String imageType = "BASE64";
 				String groupIdList = "3,2,group1";
 				JSONObject jsonObj = c.search(image, imageType, groupIdList, TypeUtil.dynamic_cast(options));
