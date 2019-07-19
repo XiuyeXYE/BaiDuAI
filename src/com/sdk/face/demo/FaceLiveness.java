@@ -25,8 +25,8 @@ public class FaceLiveness {
 		Utils.client().ifPresent(c->{
 			//斯大林
 //			String filename = "faces/political_stalin_gray_male_face.jpg";
-//			String filename = "faces/whiteMaleFrontFace.png";
-			String filename = "faces/multi_faces.jpg";
+			String filename = "faces/whiteMaleFrontFace.png";
+//			String filename = "faces/multi_faces.jpg";
 //			String image = Utils.base64Image("faces/whiteMaleFrontFace.png").get();
 			
 			String image = Utils.base64Image(filename).get();
@@ -43,7 +43,7 @@ public class FaceLiveness {
 				double top = (double) loc.get("top");							
 				int width = (int) loc.get("width");							
 				int height = (int) loc.get("height");
-				IV.imshow(U.rect(U.toImage(filename), Color.RED, (int)left, (int)top, width, height));
+				IV.imshow(U.rect(filename, Color.RED, (int)left, (int)top, width, height));
 			}
 			IV.waitKey();
 		});

@@ -29,7 +29,8 @@ public class General {
 		String otherHost = "https://aip.baidubce.com/rest/2.0/ocr/v1/general";
 		// 本地图片路径
 //		String filePath = "E:\\code3\\analyze\\laji2.jpg";
-		String filePath = "pic/image_advertise.jpeg";
+//		String filePath = "pic/image_advertise.jpeg";
+		String filePath = "pic/hospital info.png";
 		try {
 			byte[] imgData = FileUtil.readFileByBytes(filePath);
 			String imgStr = Base64Util.encode(imgData);
@@ -47,6 +48,7 @@ public class General {
 			String accessToken = AuthService.getAuth();
 			String result = HttpUtil.post(otherHost, accessToken, params);
 			System.out.println(GsonUtils.format(result));
+			FileUtil.writeFile("hospital.txt", GsonUtils.format(result).getBytes());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
