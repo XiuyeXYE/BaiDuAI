@@ -53,7 +53,7 @@ public class Utils {
 		return TypeUtil.dynamic_cast(t);
 	}
 	
-	public static <T> List<?> list(T t){
+	public static <T,R> List<R> list(T t){
 		return TypeUtil.dynamic_cast(t);
 	}
 
