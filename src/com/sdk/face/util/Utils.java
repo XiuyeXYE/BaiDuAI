@@ -14,6 +14,8 @@ import com.xy.util.FileUtil;
 
 public class Utils {
 
+	public static final String error_pic = "resources/error.png";
+
 	public static Optional<String> base64Image(String fileName) {
 		try {
 			return Optional.ofNullable(Base64Util.encode(FileUtil.readFileByBytes(fileName)));
@@ -52,7 +54,7 @@ public class Utils {
 	public static <T> int I(T t){
 		return TypeUtil.dynamic_cast(t);
 	}
-	
+
 	public static <T,R> List<R> list(T t){
 		return TypeUtil.dynamic_cast(t);
 	}

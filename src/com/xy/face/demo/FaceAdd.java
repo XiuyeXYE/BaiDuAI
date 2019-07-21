@@ -45,7 +45,7 @@ public class FaceAdd {
 
             String accessToken = AuthService.getAuth();
 //            String accessToken = AuthService.getAuth(Global.APP_KEY,Global.SECURITY_KEY);
-            
+
             String result = HttpUtil.post(url, accessToken, "application/json", param);
             System.out.println(GsonUtils.format(result));
             return result;
