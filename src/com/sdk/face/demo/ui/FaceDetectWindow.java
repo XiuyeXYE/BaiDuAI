@@ -77,10 +77,10 @@ public class FaceDetectWindow extends Application {
 						JSONObject jsonObj = c.detect(im, "BASE64", options);
 						result.clear();
 						info.clear();
-						result.appendText(jsonObj.toString(4));
+						result.appendText("结果:\n" + jsonObj.toString(4));
 						LogUtil.log(jsonObj.toString(4));
 						Map<String, Object> m = jsonObj.toMap();
-						if ((int) m.get("error_code") == 0) {
+						if (m.get("error_code").equals(0)) {
 							Map<String, Object> res = Utils.map(m.get("result"));
 							int faceNum = Utils.I(res.get("face_num"));
 							List<?> faces = Utils.list(res.get("face_list"));
@@ -99,10 +99,10 @@ public class FaceDetectWindow extends Application {
 								// LogUtil.log("face_probability=",
 								// face.get("face_probability"));
 								LogUtil.log(location);
-								int top = TypeUtil.<Double, Object>dynamic_cast(location.get("top")).intValue();
-								int left = TypeUtil.<Double, Object>dynamic_cast(location.get("left")).intValue();
-								int width = TypeUtil.<Integer, Object>dynamic_cast(location.get("width")).intValue();
-								int height = TypeUtil.<Integer, Object>dynamic_cast(location.get("height")).intValue();
+								int top = Utils.toInt(location.get("top"));
+								int left = Utils.toInt(location.get("left"));
+								int width = Utils.toInt(location.get("width"));
+								int height = Utils.toInt(location.get("height"));
 								image = U.rect(image, Color.RED, left, top, width, height, 2);
 							}
 							// IV.imshow(image);
