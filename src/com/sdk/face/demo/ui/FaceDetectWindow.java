@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import com.sdk.face.util.Utils;
 import com.xiuye.util.OpW;
 import com.xiuye.util.U;
+import com.xiuye.util.UI;
 import com.xiuye.util.log.LogUtil;
 
 import javafx.application.Application;
@@ -72,9 +73,11 @@ public class FaceDetectWindow extends Application {
 					// options.put("liveness_control", "LOW");
 					Utils.base64Image(filename).ifPresent(im -> {
 						JSONObject jsonObj = c.detect(im, "BASE64", options);
-						result.clear();
-						info.clear();
-						result.appendText("结果:\n" + jsonObj.toString(4));
+						UI.threadStart(() -> {
+							result.clear();
+							info.clear();
+							result.appendText("结果:\n" + jsonObj.toString(4));
+						});
 						LogUtil.log(jsonObj.toString(4));
 						Map<String, Object> m = jsonObj.toMap();
 						if (m.get("error_code").equals(0)) {
@@ -84,14 +87,18 @@ public class FaceDetectWindow extends Application {
 							Image image = U.toImage(filename);
 							for (int i = 0; i < faceNum; i++) {
 								Map<String, Object> face = Utils.map(faces.get(i));
+								int num = i + 1;
+								UI.threadStart(() -> {
+									// LogUtil.log("gender=", face.get("gender"));
+									info.appendText("识别" + num + "号 :\n" + "性别 : " + face.get("gender") + "\n" + "年龄 : "
+											+ face.get("age") + "\n" + "种族 : " + face.get("race") + "\n" + "颜值 : "
+											+ face.get("beauty") + "\n" + "表情 : " + face.get("expression") + "\n"
+											+ "眼镜 : " + face.get("glasses") + "\n" + "情绪 : " + face.get("emotion")
+											+ "\n" + "人脸特征码 : " + face.get("face_token") + "\n" + "位置 : "
+											+ face.get("location") + "\n");
+									info.appendText("\n");
+								});
 
-								// LogUtil.log("gender=", face.get("gender"));
-								info.appendText("识别" + (i + 1) + "号 :\n" + "性别 : " + face.get("gender") + "\n" + "年龄 : "
-										+ face.get("age") + "\n" + "种族 : " + face.get("race") + "\n" + "颜值 : "
-										+ face.get("beauty") + "\n" + "表情 : " + face.get("expression") + "\n" + "眼镜 : "
-										+ face.get("glasses") + "\n" + "情绪 : " + face.get("emotion") + "\n" + "人脸特征码 : "
-										+ face.get("face_token") + "\n" + "位置 : " + face.get("location") + "\n");
-								info.appendText("\n");
 								Map<String, Object> location = Utils.map(face.get("location"));
 								// LogUtil.log("face_probability=",
 								// face.get("face_probability"));

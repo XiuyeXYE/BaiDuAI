@@ -19,7 +19,7 @@ public class FaceCompared {
 			String image1 = Utils.base64Image("faces/whiteMaleSideFace.png").get();
 			String image2 = Utils.base64Image("faces/whiteMaleFrontFace.png").get();
 
-			// image1/image2也可以为url或facetoken, 相应的imageType参数需要与之对应。
+			// image1/image2也可以为urn或facetoken, 相应的imageType参数需要与之对应。
 			MatchRequest req1 = new MatchRequest(image1, "BASE64");
 			MatchRequest req2 = new MatchRequest(image2, "BASE64");
 			ArrayList<MatchRequest> requests = new ArrayList<MatchRequest>();
