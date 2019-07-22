@@ -2,8 +2,6 @@ package com.sdk.face.demo.ui;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -17,6 +15,7 @@ import com.xiuye.util.UI;
 import com.xiuye.util.log.LogUtil;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.NodeOrientation;
@@ -84,7 +83,9 @@ public class FaceComparedWindow extends Application {
 				}).ifTrue(() -> {
 					return f.getAbsolutePath();
 				}).get();
+//				UI.threadStart(() -> {
 				imgPrty1.set(U.toImage(filename1));
+//				});
 				U.threadStart(() -> {
 					if (Objects.nonNull(filename2)) {
 						Utils.client().ifPresent(c -> {
@@ -94,17 +95,21 @@ public class FaceComparedWindow extends Application {
 							requests.add(req1);
 							requests.add(req2);
 							JSONObject jsonObj = c.match(requests);
-							UI.threadStart(()->{
+							Platform.runLater(() -> {
 								result.clear();
 								result.appendText("结果:\n" + jsonObj.toString(4));
 							});
 							LogUtil.log(jsonObj.toString(4));
 							Map<String, Object> m = jsonObj.toMap();
 							if (!m.get("error_code").equals(0)) {
-								imgPrty1.set(U.toImage(Utils.error_pic));
-								imgPrty2.set(U.toImage(Utils.error_pic));
+								Platform.runLater(() -> {
+									imgPrty1.set(U.toImage(Utils.error_pic));
+									imgPrty2.set(U.toImage(Utils.error_pic));
+								});
 							} else {
-								ssp.set(Utils.map(m.get("result")).get("score").toString());
+								Platform.runLater(() -> {
+									ssp.set(("相似度 : " + Utils.map(m.get("result")).get("score").toString()));
+								});
 							}
 						});
 					}
@@ -123,7 +128,10 @@ public class FaceComparedWindow extends Application {
 				}).ifTrue(() -> {
 					return f.getAbsolutePath();
 				}).get();
+//				UI.threadStart(() -> {
 				imgPrty2.set(U.toImage(filename2));
+//				});
+
 				U.threadStart(() -> {
 					if (Objects.nonNull(filename1)) {
 						Utils.client().ifPresent(c -> {
@@ -133,18 +141,22 @@ public class FaceComparedWindow extends Application {
 							requests.add(req1);
 							requests.add(req2);
 							JSONObject jsonObj = c.match(requests);
-							UI.threadStart(()->{
+							Platform.runLater(() -> {
 								result.clear();
 								result.appendText("结果:\n" + jsonObj.toString(4));
 							});
-							
+
 							LogUtil.log(jsonObj.toString(4));
 							Map<String, Object> m = jsonObj.toMap();
 							if (!m.get("error_code").equals(0)) {
-								imgPrty1.set(U.toImage(Utils.error_pic));
-								imgPrty2.set(U.toImage(Utils.error_pic));
+								Platform.runLater(() -> {
+									imgPrty1.set(U.toImage(Utils.error_pic));
+									imgPrty2.set(U.toImage(Utils.error_pic));
+								});
 							} else {
-								ssp.set(("相似度 : " + Utils.map(m.get("result")).get("score").toString()));
+								Platform.runLater(() -> {
+									ssp.set(("相似度 : " + Utils.map(m.get("result")).get("score").toString()));
+								});
 							}
 						});
 					}
@@ -176,7 +188,8 @@ public class FaceComparedWindow extends Application {
 	}
 
 	public static void main(String[] args) {
-		launch(args);
+//		launch(args);
+		U.runApplication(FaceComparedWindow.class, args);
 	}
 
 }

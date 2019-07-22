@@ -52,7 +52,7 @@ public class FaceDetectWindow extends Application {
 			if (Objects.nonNull(f)) {
 
 				String filename = OpW.of(f).ifPresent(file -> {
-					System.out.println(file);
+//					System.out.println(file);
 					return file.exists();
 				}).ifTrue(() -> {
 					return f.canRead();
@@ -137,7 +137,6 @@ public class FaceDetectWindow extends Application {
 		bp.setCenter(sp);
 
 		Scene scene = new Scene(bp);
-
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("人脸检测");
 		primaryStage.show();
@@ -145,7 +144,8 @@ public class FaceDetectWindow extends Application {
 	}
 
 	public static void main(String[] args) {
-		launch(args);
+//		launch(args);
+		U.runApplication(FaceDetectWindow.class, args);
 	}
 
 }
