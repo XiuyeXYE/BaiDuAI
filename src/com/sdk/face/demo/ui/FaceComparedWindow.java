@@ -11,7 +11,6 @@ import com.baidu.aip.face.MatchRequest;
 import com.sdk.face.util.Utils;
 import com.xiuye.util.OpW;
 import com.xiuye.util.U;
-import com.xiuye.util.UI;
 import com.xiuye.util.log.LogUtil;
 
 import javafx.application.Application;

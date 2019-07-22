@@ -1,7 +1,8 @@
 package com.xy.face.demo;
 
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.baidu.aip.util.Base64Util;
 import com.xy.face.AuthService;

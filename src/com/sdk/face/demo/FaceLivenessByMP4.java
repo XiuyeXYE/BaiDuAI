@@ -1,13 +1,11 @@
 package com.sdk.face.demo;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.json.JSONObject;
 
-import com.baidu.aip.face.MatchRequest;
 import com.baidu.aip.util.Base64Util;
 import com.sdk.face.util.Utils;
 import com.xiuye.util.U;

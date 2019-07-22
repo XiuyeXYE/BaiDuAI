@@ -1,9 +1,9 @@
 package com.xy.face.demo;
 
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import com.xy.Global;
 import com.xy.face.AuthService;
 import com.xy.util.Base64Util;
 import com.xy.util.FileUtil;

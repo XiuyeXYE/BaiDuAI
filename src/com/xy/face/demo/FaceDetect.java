@@ -2,14 +2,14 @@ package com.xy.face.demo;
 
 
 
-import com.xy.util.HttpUtil;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.xy.face.AuthService;
 import com.xy.util.Base64Util;
 import com.xy.util.FileUtil;
 import com.xy.util.GsonUtils;
-
-import java.util.*;
-import java.util.Base64.Encoder;
+import com.xy.util.HttpUtil;
 
 /**
 * 人脸检测与属性分析

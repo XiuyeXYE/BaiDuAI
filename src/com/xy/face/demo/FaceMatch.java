@@ -1,7 +1,10 @@
 package com.xy.face.demo;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.xy.face.AuthService;
 import com.xy.util.Base64Util;

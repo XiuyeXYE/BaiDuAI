@@ -2,6 +2,7 @@ package com.sdk.face.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONObject;
 
@@ -11,8 +12,6 @@ import com.xiuye.util.U;
 import com.xiuye.window.IV;
 
 import javafx.scene.paint.Color;
-
-import java.util.Map;
 
 /**
  * 在线活体检测

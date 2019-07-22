@@ -4,7 +4,6 @@ import java.net.URLEncoder;
 import java.util.Map;
 
 import com.xiuye.util.cls.TypeUtil;
-import com.xiuye.util.log.LogUtil;
 import com.xy.image.AuthService;
 import com.xy.util.Base64Util;
 import com.xy.util.FileUtil;

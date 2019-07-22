@@ -1,11 +1,8 @@
 package com.xy.util;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Optional;
-
-import com.xiuye.util.log.LogUtil;
 
 public class ContetnCheckUtil {
 

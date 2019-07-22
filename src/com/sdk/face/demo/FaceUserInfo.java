@@ -5,8 +5,6 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 import com.sdk.face.util.Utils;
-import com.xiuye.util.log.LogUtil;
-import com.xy.util.Base64Util;
 /**
  * 人脸用户信息查询【人脸管理库】
  * @author admin

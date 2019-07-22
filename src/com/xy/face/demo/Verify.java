@@ -1,15 +1,15 @@
 package com.xy.face.demo;
 
-import com.xy.util.HttpUtil;
+import java.net.URLEncoder;
+import java.util.List;
+import java.util.Map;
+
 import com.xiuye.util.cls.TypeUtil;
 import com.xy.face.AuthService;
 import com.xy.util.Base64Util;
 import com.xy.util.FileUtil;
 import com.xy.util.GsonUtils;
-
-import java.net.URLEncoder;
-import java.util.*;
-import java.util.Base64.Encoder;
+import com.xy.util.HttpUtil;
 
 /**
  * 视频活体检测接口

@@ -3,12 +3,7 @@ package com.xy.image.demo;
 
 
 import java.net.URLEncoder;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Map;
 
-import com.xiuye.util.cls.TypeUtil;
-import com.xiuye.util.log.LogUtil;
 import com.xy.image.AuthService;
 import com.xy.util.Base64Util;
 import com.xy.util.FileUtil;

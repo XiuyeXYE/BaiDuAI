@@ -1,9 +1,7 @@
 package com.xy.words.demo;
 
-import java.io.IOException;
 import java.net.URLEncoder;
 
-import com.xiuye.util.log.LogUtil;
 import com.xy.util.Base64Util;
 import com.xy.util.FileUtil;
 import com.xy.util.GsonUtils;
