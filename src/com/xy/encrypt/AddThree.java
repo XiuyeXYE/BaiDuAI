@@ -14,7 +14,7 @@ public class AddThree {
 //		}
 		int total = 26;
 		
-		String s = "hentai";
+		String s = "henddddtai";
 		char []chs = s.toCharArray();
 		LogUtil.log(chs[0]);
 		for(int i=0;i<chs.length;i++) {
