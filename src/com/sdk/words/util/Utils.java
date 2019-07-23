@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.baidu.aip.face.AipFace;
-import com.sdk.face.FaceGlobal;
+import com.baidu.aip.ocr.AipOcr;
+import com.sdk.words.WordsGlobal;
 import com.xiuye.util.cls.TypeUtil;
 import com.xy.util.Base64Util;
 import com.xy.util.FileUtil;
@@ -25,9 +25,9 @@ public class Utils {
 		return Optional.empty();
 	}
 
-	public static Optional<AipFace> client() {
+	public static Optional<AipOcr> client() {
 		// 初始化一个AipFace
-		AipFace client = new AipFace(FaceGlobal.APP_ID, FaceGlobal.API_KEY, FaceGlobal.SECURITY_KEY);
+		AipOcr client = new AipOcr(WordsGlobal.APP_ID, WordsGlobal.API_KEY, WordsGlobal.SECURITY_KEY);
 
 		// 可选：设置网络连接参数
 		client.setConnectionTimeoutInMillis(2000);
