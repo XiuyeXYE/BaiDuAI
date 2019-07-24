@@ -40,6 +40,9 @@ public class BasicGeneralController implements Initializable {
 	public void click(ActionEvent event) {
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(new File("."));
+		//filter
+		fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
+				new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
 		Optional.ofNullable(fc.showOpenDialog(null)).ifPresent(file -> {
 			String filename = file.getAbsolutePath();
 			UI.runLater(() -> {
@@ -49,10 +52,10 @@ public class BasicGeneralController implements Initializable {
 				Utils.client().ifPresent(c -> {
 					// 传入可选参数调用接口
 					HashMap<String, String> options = new HashMap<String, String>();
-					options.put("language_type", "CHN_ENG");
-					options.put("detect_direction", "true");
-					options.put("detect_language", "true");
-					options.put("probability", "true");
+//					options.put("language_type", "CHN_ENG");
+//					options.put("detect_direction", "true");
+//					options.put("detect_language", "true");
+//					options.put("probability", "true");
 
 					// 参数为本地路径
 					String image = filename;
@@ -70,7 +73,7 @@ public class BasicGeneralController implements Initializable {
 							int num = i + 1;
 							if (Objects.nonNull(words)) {
 								UI.runLater(() -> {
-									info.appendText("第" + num + "行 : " + words+"\r\n");
+									info.appendText("第" + num + "行 : " + words + "\r\n");
 								});
 							}
 						}
