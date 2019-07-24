@@ -40,7 +40,7 @@ public class BasicGeneralController implements Initializable {
 	public void click(ActionEvent event) {
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(new File("."));
-		//filter
+		// filter
 		fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
 				new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
 		Optional.ofNullable(fc.showOpenDialog(null)).ifPresent(file -> {
