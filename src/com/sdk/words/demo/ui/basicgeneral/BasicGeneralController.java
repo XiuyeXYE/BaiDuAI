@@ -15,7 +15,6 @@ import com.sdk.words.util.Utils;
 import com.xiuye.util.U;
 import com.xiuye.util.UI;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
