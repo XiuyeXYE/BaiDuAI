@@ -3,6 +3,9 @@ package com.sdk.words.demo.ui.basicgeneral;
 import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -12,6 +15,7 @@ import com.sdk.words.util.Utils;
 import com.xiuye.util.U;
 import com.xiuye.util.UI;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,13 +31,12 @@ public class BasicGeneralController implements Initializable {
 
 	@FXML
 	private Button uploadBtn;
-	
+
 	@FXML
 	private TextArea info;
-	
+
 	@FXML
 	private TextArea result;
-	
 
 	public void click(ActionEvent event) {
 		FileChooser fc = new FileChooser();
@@ -56,12 +59,24 @@ public class BasicGeneralController implements Initializable {
 					String image = filename;
 					JSONObject res = c.basicGeneral(image, options);
 					System.out.println(res.toString(4));
-
-					UI.runLater(()->{
-						info.setText(res.toString(4));
+					UI.runLater(() -> {
 						result.setText(res.toString(4));
+						info.clear();
 					});
-					
+					List<Map<String, Object>> results = Utils.list(res.toMap().get("words_result"));
+					if (Objects.nonNull(results) && !results.isEmpty()) {
+
+						for (int i = 0; i < results.size(); i++) {
+							String words = (String) results.get(i).get("words");
+							int num = i + 1;
+							if (Objects.nonNull(words)) {
+								UI.runLater(() -> {
+									info.appendText("第" + num + "行 : " + words+"\r\n");
+								});
+							}
+						}
+					}
+
 					// 参数为二进制数组
 //			    byte[] file = readFile(image);
 //			    res = c.basicGeneral(file, options);
