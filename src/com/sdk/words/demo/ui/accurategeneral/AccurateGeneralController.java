@@ -23,6 +23,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
+/**
+ * 通用文字识别（含位置高精度版）
+ * @author admin
+ *
+ */
 public class AccurateGeneralController implements Initializable {
 
 	@FXML

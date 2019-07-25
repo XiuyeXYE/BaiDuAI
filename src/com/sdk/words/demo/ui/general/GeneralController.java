@@ -1,4 +1,4 @@
-package com.sdk.words.demo.ui.basicgeneral;
+package com.sdk.words.demo.ui.general;
 
 import java.io.File;
 import java.net.URL;
@@ -24,11 +24,11 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 /**
- * 通用文字识别
+ * 通用文字识别（含位置信息版）
  * @author admin
  *
  */
-public class BasicGeneralController implements Initializable {
+public class GeneralController implements Initializable {
 
 	@FXML
 	private ImageView iv;
@@ -46,8 +46,8 @@ public class BasicGeneralController implements Initializable {
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(new File("."));
 		// filter
-		fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
-				new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
+//		fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
+//				new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
 		Optional.ofNullable(fc.showOpenDialog(null)).ifPresent(file -> {
 			String filename = file.getAbsolutePath();
 			UI.runLater(() -> {
@@ -57,14 +57,16 @@ public class BasicGeneralController implements Initializable {
 				Utils.client().ifPresent(c -> {
 					// 传入可选参数调用接口
 					HashMap<String, String> options = new HashMap<String, String>();
-//					options.put("language_type", "CHN_ENG");
-//					options.put("detect_direction", "true");
-//					options.put("detect_language", "true");
-//					options.put("probability", "true");
+					options.put("recognize_granularity", "big");
+				    options.put("language_type", "CHN_ENG");
+				    options.put("detect_direction", "true");
+				    options.put("detect_language", "true");
+				    options.put("vertexes_location", "true");
+				    options.put("probability", "true");
 
 					// 参数为本地路径
 					String image = filename;
-					JSONObject res = c.basicGeneral(image, options);
+					JSONObject res = c.general(image, options);
 					System.out.println(res.toString(4));
 					UI.runLater(() -> {
 						result.setText(res.toString(4));
@@ -84,14 +86,6 @@ public class BasicGeneralController implements Initializable {
 						}
 					}
 
-					// 参数为二进制数组
-//			    byte[] file = readFile(image);
-//			    res = c.basicGeneral(file, options);
-//			    System.out.println(res.toString(4));
-
-					// 通用文字识别, 图片参数为远程url图片
-//			    JSONObject res = c.basicGeneralUrl(url, options);
-//			    System.out.println(res.toString(4));
 				});
 			});
 		});
