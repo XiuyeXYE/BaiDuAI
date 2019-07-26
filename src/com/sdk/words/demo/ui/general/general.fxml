@@ -16,7 +16,7 @@
 	prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
 	xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="com.sdk.words.demo.ui.general.GeneralController">
-	<fx:script source="GeneralController.js" />
+	<!-- <fx:script source="GeneralController.js" /> -->
 	
 	<center>
 		<SplitPane dividerPositions="0.5" prefHeight="160.0"

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sdk.words.demo.ui.idcard.IdcardController">
+	<center>
+		<SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+			<items>
+				<ScrollPane>
+					<content>
+						<ImageView fx:id="iv" pickOnBounds="true" preserveRatio="true" />
+					</content>
+				</ScrollPane>
+				<TextArea fx:id="info" editable="false">
+					<font>
+						<Font size="18.0" />
+					</font>
+				</TextArea>
+			</items>
+		</SplitPane>
+	</center>
+	<top>
+		<ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+			<items>
+				<ChoiceBox fx:id="choice" prefWidth="150.0" value="front">
+					<items>
+						<FXCollections fx:factory="observableArrayList">
+							<String fx:value="front" />
+							<String fx:value="back" />
+						</FXCollections>
+					</items>
+				</ChoiceBox>
+				<Button fx:id="uploadBtn" mnemonicParsing="false" onAction="#click" text="文件上传" />
+			</items>
+		</ToolBar>
+	</top>
+	<bottom>
+		<TextArea fx:id="result" editable="false" BorderPane.alignment="CENTER">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</TextArea>
+	</bottom>
+</BorderPane>
